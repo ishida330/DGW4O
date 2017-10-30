@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DGW4O</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h3> IBM Data Gateway for OData </h3>
+    </div>
+    <div class="demo">
+        <div class="twelve columns">
+            <label>ServiceURL:</label>
+            <a>例) http://192.168.118.132:9080/ODataOne/ODataService/SAMPLE-1cd7e4e922b14e1dab6820a8167ca4cc/</a>
+            <input class="u-full-width" type="text" value="ご自身のServiceURLに書き換えてください　(htmlを直接書き換えてしまうとリロード/再実行が楽です)" id="url">
+            <label>Query:</label>
+            <a>例)コピペしてご活用ください。詳しくは</a><a href="http://olingo.staging.apache.org/doc/odata4/index.html"　 target="_blank">OlingoのTutorial</a><a>や</a><a href="http://docs.oasis-open.org/odata/odata/v4.0/csprd02/part2-url-conventions/odata-v4.0-csprd02-part2-url-conventions.html"　 target="_blank">OASISの仕様</a><a>が参考になります。</a>
+        </div>
+        <div class="twelve columns">
+            <div class="six columns">
+                <ul>
+                    <li>STAFFS?$top=3 ... 始 めの3件</li>
+                    <li>STAFFS?$select=ID,NAME,JOB ...カラム選択</li>
+                    <li>STAFFS?$orderby=SALARY asc, COMM desc ...昇順/降順</li>
+                </ul>
+            </div>
+            <div class="six columns">
+                <ul>
+                    <li>STAFFS?$filter=ID eq 30 ...　where ID=3 0　と同義</li>
+                    <li>STAFFS?$filter=ID gt 100 ... where ID> 100 と同義</li>
+                    <li>STAFFS?$filter=ID eq 30 or contains(JOB,'Sales') ... JOB IN( 'Sales')と同義</li>
+                    <li>STAFFS?$filter=SALARY add COMM gt 80000 ... SALARY+COMM>80000と同義</li>
+                </ul>
+            </div>
+        </div>
+        <div class="twelve columns">
+            <input class="u-full-width" value="STAFFS?$top=5&$format=json" type="text" value="" id="qs">
+            <button id="btn-search" class="button-primary">実行</button>
+        </div>
+        <a id="row-cnt"></a>
+        <div class="row">
+            <table class="table" id="data-list">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/myapp.js"></script>
+</body>
+</html>
